@@ -1,7 +1,12 @@
 node_modules/
+.idea/
 .expo/
 dist/
 npm-debug.*
+.env
+.env.local
+.prettierrc
+.eslintrc
 *.jks
 *.p8
 *.p12
