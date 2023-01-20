@@ -1,6 +1,7 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import { useCallback, useEffect, useState } from 'react';
+import { SvgCssUri } from 'react-native-svg';
 
 export interface geolocation {
   name: string;
@@ -36,7 +37,7 @@ export default function App() {
       const weatherObj = await weatherResObj.json();
       const _temperature: number | undefined | null =
         weatherObj?.hourly?.temperature_2m[0];
-      setTemperature(_temperature);
+      typeof _temperature === 'number' && setTemperature(_temperature);
     } catch (e) {
       console.error(e);
       return null;
@@ -48,12 +49,11 @@ export default function App() {
   }, [selectedCity]);
 
   return (
-    <>
+    <View style={{ flex: 1, width: '100%', flexDirection: 'column' }}>
       <View style={styles.container}>
-        <Image
-          source={require('./assets/icons/cloud.svg')}
-          style={{ width: 70, height: 50, marginBottom: 25 }}
-        />
+        <View style={styles.container}>
+          <SvgCssUri width="50%" height="50%" uri="/assets/icons/cloud.svg" />
+        </View>
         <Text style={{ fontSize: 20, marginTop: 15, marginBottom: 10 }}>
           Temperature in {selectedCity.name}
         </Text>
@@ -72,30 +72,29 @@ export default function App() {
           buttonStyle={styles.selectList}
         />
       </View>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 70,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   footer: {
-    display: 'flex',
-    flexShrink: 0,
+    flex: 1,
+    padding: 70,
     marginBottom: 20,
-    height: 70,
-    // width: 200,
-    // margin: 'auto',
+    margin: 'auto',
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   selectList: {
     width: 200,
-    marginBottom: 70,
+    maxWidth: '80%',
   },
 });

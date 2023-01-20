@@ -17,10 +17,13 @@
     "expo": "~47.0.12",
     "expo-status-bar": "~1.4.2",
     "jsc-android": "^294992.0.0",
+    "pod-install": "^0.1.38",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
     "react-native-select-dropdown": "^3.2.1",
+    "react-native-svg": "13.4.0",
+    "react-native-svg-transformer": "^1.0.0",
     "react-native-web": "~0.18.9",
     "typescript": "^4.6.3"
   },
