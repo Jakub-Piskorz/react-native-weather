@@ -54,6 +54,8 @@ export default function WeatherScreen() {
 
   useEffect(() => {
     getTemperature(selectedCity.lat, selectedCity.long);
+    const interval = setInterval(() => getTemperature(selectedCity.lat, selectedCity.long), 60000);
+    return () => clearInterval(interval);
   }, [selectedCity]);
 
   return (
