@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, Text as NativeText, View } from 'react-native';
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { StatusBar, StyleSheet, Text as NativeText, View } from "react-native";
 import CloudIcon from '../../assets/icons/cloud';
 import SelectDropdown from 'react-native-select-dropdown';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -18,11 +18,11 @@ const Text = (props) => (
 );
 
 export default function WeatherScreen() {
-  const cities: geolocation[] = [
+  const cities: geolocation[] = useMemo((() => ([
     { name: 'Warsaw', lat: 52.237049, long: 21.017532 },
     { name: 'Poznań', lat: 52.409538, long: 16.931992 },
     { name: 'Gdańsk', lat: 54.372158, long: 18.638306 },
-  ];
+  ])), []) ;
 
   const [selectedCity, setSelectedCity] = useState<geolocation | null>(
     cities[0]
@@ -36,7 +36,7 @@ export default function WeatherScreen() {
   const [temperature, setTemperature] = useState<number | null>(null);
 
   // Connects to open-meteo API and returns the temperature in ℃
-  const getTemperature = async (lat: number, long: number) => {
+  const getTemperature = useCallback(async (lat: number, long: number) => {
     try {
       const weatherResObj = await fetch(urlBuilder(lat, long));
       if (!weatherResObj.ok) {
@@ -50,7 +50,7 @@ export default function WeatherScreen() {
       console.error(e);
       return null;
     }
-  };
+  }, []);
 
   useEffect(() => {
     getTemperature(selectedCity.lat, selectedCity.long);
@@ -60,6 +60,7 @@ export default function WeatherScreen() {
 
   return (
     <>
+      <StatusBar />
       <LinearGradient
         colors={['rgba(9,78,121,1)', 'rgba(0,212,255,1)']}
         style={styles.background}
