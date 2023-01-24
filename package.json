@@ -17,6 +17,7 @@
     "expo": "~47.0.12",
     "expo-linear-gradient": "^12.0.1",
     "expo-status-bar": "~1.4.2",
+    "expo-updates": "~0.15.6",
     "jsc-android": "^294992.0.0",
     "pod-install": "^0.1.38",
     "react": "18.1.0",
