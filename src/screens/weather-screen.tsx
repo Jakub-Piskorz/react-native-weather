@@ -4,6 +4,8 @@ import CloudIcon from '../../assets/icons/cloud';
 import SelectDropdown from 'react-native-select-dropdown';
 import { LinearGradient } from 'expo-linear-gradient';
 import padding from '../utils/padding';
+import * as Sentry from 'sentry-expo';
+import {SENTRY_AUTH_TOKEN} from '@env';
 
 interface geolocation {
   name: string;
@@ -57,6 +59,17 @@ export default function WeatherScreen() {
     const interval = setInterval(() => getTemperature(selectedCity.lat, selectedCity.long), 60000);
     return () => clearInterval(interval);
   }, [selectedCity]);
+
+  useEffect(() => {
+    try {
+      console.log("env")
+      console.log(SENTRY_AUTH_TOKEN)
+      Error('Test error');
+    } catch (e) {
+      Sentry.Native.captureException(e)
+      Sentry.Browser.captureException(e)
+    }
+  } , [])
 
   return (
     <>
