@@ -22,9 +22,7 @@ const MainScreen = () => {
             uri: 'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_1x_r5.png',
           }}
         />
-        <TextInput className="flex-1 bg-gray-50 h-10 px-2 py-1">
-          Hello
-        </TextInput>
+        <TextInput />
         <MagnifyingGlassIcon size={20} color="black" />
       </View>
     </SafeAreaView>
