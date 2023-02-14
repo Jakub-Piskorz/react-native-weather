@@ -1,14 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MainScreen from './screens/main-screen';
 import { withExpoSnack } from 'nativewind';
+import WeatherScreen from './screens/weather-screen';
 
 const App = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name='Main' component={WeatherScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
