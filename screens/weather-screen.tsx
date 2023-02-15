@@ -76,7 +76,7 @@ export default function WeatherScreen() {
       >
         <View style={styles.container}>
           <View style={{ paddingBottom: 10 }}>
-            <CloudIcon color='white' />
+            <CloudIcon color='white' size={90} />
           </View>
           <Text
             style={{
