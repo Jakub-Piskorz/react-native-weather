@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import { StyleSheet, Text as NativeText, View } from 'react-native';
+import { StatusBar, StyleSheet, Text as NativeText, View } from 'react-native';
 // import CloudIcon from '../../assets/icons/cloud';
 import SelectDropdown from 'react-native-select-dropdown';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -70,6 +70,7 @@ export default function WeatherScreen() {
 
   return (
     <>
+      <StatusBar />
       <LinearGradient
         colors={['rgba(9,78,121,1)', 'rgba(0,212,255,1)']}
         style={styles.background}
