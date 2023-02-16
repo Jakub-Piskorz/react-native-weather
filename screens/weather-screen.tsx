@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import { StatusBar, StyleSheet, Text as NativeText, View } from 'react-native';
-// import CloudIcon from '../../assets/icons/cloud';
+import { StyleSheet, Text as NativeText, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import SelectDropdown from 'react-native-select-dropdown';
 import { LinearGradient } from 'expo-linear-gradient';
 import padding from '../utils/padding';
